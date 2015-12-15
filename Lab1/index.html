@@ -1,0 +1,60 @@
+<html>
+<head/>
+<body>
+<!-- Брезенхем - построить отрезки прямых 10 штук с началом в точка (0 0) и тангенсами угла наклона
+от 0 до -1 -->
+<canvas id='less01' width='480' height='320'>
+	<script>
+		var canvas = document.getElementById('less01');
+		var k = 1;
+		var ctx = canvas.getContext('2d');
+	for(j=0;j<11; j++)
+{
+		var y=0;
+		var d=0;
+		for (x=0;x<100; x++) {
+			if(d>5) {y+=1; d-=10;}
+			ctx.fillRect(k*x,k*y,k*1,k*1);
+			d+=j;
+			
+		}
+}
+	</script>
+</canvas>
+
+<!-- Построить окружность с задаваемым в переменной радиусом в с помощью алгоритма Брезенхема для окружностей -->
+
+<canvas id='less01.1' width='480' height='320'>
+	<script>
+		var canvas = document.getElementById('less01.1');
+		var F = -59;
+		var t = 2;
+		var ctx = canvas.getContext('2d');
+		var Rad = 50;
+		var x=Rad, y=0;
+		var x0=50, y0=50;
+		var RadErr = 1-x;
+		while(x>=y) {
+			ctx.fillRect(t*(x0+x), t*(y0-y), t*1 , t*1);
+			ctx.fillRect(t*(x0+x), t*(y0+y), t*1 , t*1);
+			ctx.fillRect(t*(x0-x), t*(y0-y), t*1 , t*1);
+			ctx.fillRect(t*(x0-x), t*(y0+y), t*1 , t*1);
+			ctx.fillRect(t*(x0+y), t*(y0-x), t*1 , t*1);
+			ctx.fillRect(t*(x0+y), t*(y0+x), t*1 , t*1);		
+			ctx.fillRect(t*(x0-y), t*(y0-x), t*1 , t*1);
+			ctx.fillRect(t*(x0-y), t*(y0+x), t*1 , t*1);
+			y++;
+			if(RadErr<0) {
+				RadErr +=2*y+1;
+					}
+			else {x--;
+			      RadErr+= 2*(y-x+1);	}
+
+		}
+	
+	</script>
+</canvas>
+
+
+</body>
+</html>
